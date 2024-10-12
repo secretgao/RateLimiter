@@ -6,6 +6,6 @@
 ## 车票项目
 ##### 项目背景
     * 主要是为了开发商引流，提供免费打车看房服务
-    * (项目简易流程图)[https://www.yuque.com/hongliyuyulvliyuyulvxoxo/hbwglt/isqpae2uzc3g669n?singleDoc]
+###### (项目简易流程图)[https://www.yuque.com/hongliyuyulvliyuyulvxoxo/hbwglt/isqpae2uzc3g669n?singleDoc]
 ##### 项目团队的组成
     * 2个后端2个前端，担任负责人（包括开发，表结构设计，跟产品沟通需求，跨部门沟通，和滴滴开发调接口），算我后端开发3人，   
