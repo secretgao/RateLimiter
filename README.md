@@ -7,7 +7,7 @@
 ```
 ├── RateLimiter
 │   ├── RateLimiter.php
-│   ├── RateLimiterFactory.php
+│   ├── RateLimiterFactory.php              // 具体调用类使用工厂模式
 │   ├── Storage                             //存储类型目录           
 │   │   ├── MemcacheStorage.php             //Memcache 存储
 │   │   ├── RedisStorage.php                //Redis存储

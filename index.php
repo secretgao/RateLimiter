@@ -39,6 +39,7 @@ try {
     } else {
         echo "Ip Request denied\n";
     }
+
 } catch (\InvalidArgumentException $e) {
     echo "Error: " . $e->getMessage() . "\n";
 }

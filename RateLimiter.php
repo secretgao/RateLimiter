@@ -14,7 +14,14 @@ class RateLimiter
         $this->strategy = $strategy;
     }
 
-    private function allowRequest(string $key, int $limit , int $window): bool
+    /**
+     * 可自定义限流策略
+     * @param string $key
+     * @param int $limit
+     * @param int $window
+     * @return bool
+     */
+    public function allowRequest(string $key, int $limit , int $window): bool
     {
         return $this->strategy->allowRequest($key, $limit, $window);
     }
