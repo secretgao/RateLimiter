@@ -69,3 +69,8 @@ ALTER TABLE table_l_2024 AUTO_INCREMENT=2024;
 * 通过拆表把表数据量变小，然后在业务代码上限制查询
 假如是要用户自己看的历史数据，可以限制只查本年内的，超过限制可以做申请历史查询记录功能，通过后台脚本跑出数据导出excel 发送给用户邮箱查看
 
+
+
+第三题
+
+https://www.yuque.com/hongliyuyulvliyuyulvxoxo/hbwglt/isqpae2uzc3g669n?singleDoc# 《无标题画板》
