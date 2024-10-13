@@ -6,7 +6,7 @@
 ##### 项目团队的组成
 * 2个后端2个前端，担任负责人（包括开发，表结构设计，跟产品沟通需求，跨部门沟通，和滴滴开发调接口），算我后端开发3人，
 ##### 项目挑战
-* 1.非技术方面，从0-1开发，从项目立项->排期->开发->跨部门协作沟通->联调->测试->上线->后续优化   
+* 1.非技术方面，从0-1开发，从项目立项->排期->开发->跨部门协作沟通->联调(各个端：pc，h5，小程序，触屏，app)->测试->上线->后续优化   
 * 2.技术方面，用户在页面点击领车票 相当于电商系统的秒杀抢商品 
     * 1) 车票扣库存
     * 2）车票重复领取
@@ -133,7 +133,7 @@ if not stock then
 end
 
 if tonumber(stock) <= 0 then
-    ngx.say(cjson.encode({status = "fail", message = "库存不足"}))
+    ngx.say(cjson.encode({status = "fail", message = "该楼盘的车票不足，请联系客服"}))
     red:del(lock_key)
     return
 end
@@ -164,5 +164,5 @@ red:del(lock_key)
 -- 释放 Redis 连接
 red:set_keepalive(10000, 100)
 
-ngx.say(cjson.encode({status = "success", message = "请求处理成功"}))
+ngx.say(cjson.encode({status = "success", message = "领取成功，请等候客服回电"}))
 ```       
