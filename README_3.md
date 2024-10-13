@@ -9,9 +9,9 @@
 * 1.非技术方面，从0-1开发，从项目立项->排期->开发->跨部门协作沟通->联调(各个端：pc，h5，小程序，触屏，app)->测试->上线->后续优化   
 * 2.技术方面，用户在页面点击领车票 相当于电商系统的秒杀抢商品
   
-    * 1) 车票扣库存
-    * 2）车票重复领取
-    * 3）保证redis 的高可用 使用哨兵模式
+    * a) 车票扣库存
+    * b）车票重复领取
+    * c）保证redis 的高可用 使用哨兵模式
 (redis-sentinel 故障自动转移)[https://github.com/secretgao/redis/blob/master/redis-sentinel.md]    
 * 使用lua 脚本 在nginx 配置中    
 ```lua
