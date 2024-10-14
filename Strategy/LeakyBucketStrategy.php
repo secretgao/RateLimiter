@@ -4,37 +4,32 @@ use RateLimiter\Storage\StorageInterface;
 class LeakyBucketStrategy implements RateLimitStrategyInterface
 {
     private $storage;
-
-    public function __construct(StorageInterface $storage)
-    {
+    public function __construct(StorageInterface $storage) {
         $this->storage = $storage;
     }
 
+
     public function allowRequest(string $key, int $limit, int $window): bool
     {
-        $currentTime = time();
+        $currentTime = microtime(true);
         $bucket = $this->storage->get($key);
 
         if (!$bucket) {
-            $bucket = [
-                'tokens' => $limit,
-                'last_time' => $currentTime
-            ];
-        } else {
-            $bucket = json_decode($bucket, true);
+            $bucket = ['water' => 0, 'lastTime' => $currentTime];
         }
 
-        $elapsed = $currentTime - $bucket['last_time'];
-        $bucket['tokens'] += $elapsed * ($limit / $window);
-        $bucket['tokens'] = min($limit, $bucket['tokens']);
-        $bucket['last_time'] = $currentTime;
+        $elapsedTime = $currentTime - $bucket['lastTime'];
+        $leakedWater = $elapsedTime * $limit;
+        $bucket['water'] = max(0, $bucket['water'] - $leakedWater);
+        $bucket['lastTime'] = $currentTime;
 
-        if ($bucket['tokens'] < 1) {
+        if ($bucket['water'] < $window) {
+            $bucket['water']++;
+            $this->storage->set($key, $bucket);
+            return true;
+        } else {
+            $this->storage->set($key, $bucket);
             return false;
         }
-
-        $bucket['tokens'] -= 1;
-        $this->storage->set($key, json_encode($bucket), $window);
-        return true;
     }
 }

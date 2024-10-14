@@ -8,6 +8,7 @@ class RateLimiter
     private $storage;
     private $strategy;
 
+    public static $globalRateLimitKey = 'global_rate_limit';
     public function __construct(StorageInterface $storage, RateLimitStrategyInterface $strategy)
     {
         $this->storage = $storage;
@@ -30,8 +31,7 @@ class RateLimiter
      */
     public function allowGlobalRequest(int $limit, int $window): bool
     {
-        $globalKey = 'global_rate_limit';
-        return $this->allowRequest($globalKey, $limit, $window);
+        return $this->allowRequest(self::$globalRateLimitKey, $limit, $window);
     }
     /**
      * 根据用户id限流策略

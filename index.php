@@ -10,6 +10,7 @@ $storageType = RateLimiterFactory::$storageTypeRedis;
 $strategyType = RateLimiterFactory::$strategyTypeLeaky;
 
 try {
+    //通过工厂创建实例
     $rateLimiter = RateLimiterFactory::create($storageType, $strategyType);
     // 全局限流
     $globalLimit = 1000; // 全局限流 1000 次请求
